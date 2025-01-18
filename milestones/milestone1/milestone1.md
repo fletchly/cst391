@@ -41,7 +41,7 @@ ONotes is a lightweight plain-text notes app that supports some simple organizat
 
 ---
 
-![](resources/wireframe2)
+![](resources/wireframe2.png)
 
 *Wireframe: Note detail display*
 
