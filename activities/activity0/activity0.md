@@ -21,3 +21,9 @@
 ![](screenshots/a0s4.png)
 
 *Screenshot 4: Express app running with Nodemon*
+
+---
+
+![](screenshots/a0s5.png)
+
+*Screenshot 5: Express app running with TypeScript*
