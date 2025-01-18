@@ -24,6 +24,6 @@
 
 ---
 
-![](screenshots/a0s5.png)
+![](screenshots/a0s5.jpeg)
 
 *Screenshot 5: Express app running with TypeScript*
