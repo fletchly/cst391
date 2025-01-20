@@ -1,15 +1,16 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import dotenv from "dotenv";
+import albumsRouter from "./albums/albums.routes";
+import artistsRouter from "./artists/artists.routes";
+
+dotenv.config();
 
 // Declare and initialize
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
-// Route at the root path
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World from TypeScript!");
-});
+app.use("/", [albumsRouter, artistsRouter]);
 
-// Listen on specified port
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+  console.log(`App listening on http://localhost://${port}`);
 });
