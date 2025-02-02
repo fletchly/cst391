@@ -1,8 +1,10 @@
-import { Request, Response, Router } from "express";
-import { getArtists } from "./artists.controller";
+import { Router } from "express";
+import * as ArtistsController from "./artists.controller";
 
 const router = Router();
 
-router.route("/artists").get(getArtists);
+router
+    .route("/artists")
+    .get(ArtistsController.readArtists);
 
 export default router;
