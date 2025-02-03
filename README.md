@@ -5,5 +5,5 @@
 - [Activity 1](activities/activity1/activity1.md)
 
 ## Milestones
-- [Milestone 1](milestones/milestone1/milestone1.md)
-- [Milestone 2](milestones/milestone2/milestone2.md)
+- [Milestone 1](milestones/milestone1/README)
+- [Milestone 2](milestones/milestone2/README)
