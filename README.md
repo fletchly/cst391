@@ -1,9 +1,9 @@
 # CST-391: JavaScript Web Application Development
 
 ## Activities
-- [Activity 0](activities/activity0/activity0.md)
-- [Activity 1](activities/activity1/activity1.md)
+- [Activity 0](activities/activity0/)
+- [Activity 1](activities/activity1/)
 
 ## Milestones
-- [Milestone 1](milestones/milestone1/README)
-- [Milestone 2](milestones/milestone2/README)
+- [Milestone 1](milestones/milestone1/)
+- [Milestone 2](milestones/milestone2/)
