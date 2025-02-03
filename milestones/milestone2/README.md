@@ -19,7 +19,7 @@ I will keep doing well :)
 
 API for managing notes
 
-## Path Table
+### Path Table
 
 | Method | Path | Description |
 | --- | --- | --- |
@@ -29,13 +29,13 @@ API for managing notes
 | PUT | [/notes/{id}](#putnotesid) | Update a note by ID |
 | DELETE | [/notes/{id}](#deletenotesid) | Delete a note by ID |
 
-## Reference Table
+### Reference Table
 
 | Name | Path | Description |
 | --- | --- | --- |
 | Note | [#/components/schemas/Note](#componentsschemasnote) |  |
 
-## Path Details
+### Path Details
 
 ***
 
@@ -174,7 +174,7 @@ API for managing notes
 
 - 404 Note not found
 
-## References
+### References
 
 ### #/components/schemas/Note
 
