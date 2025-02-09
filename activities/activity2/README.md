@@ -1,5 +1,8 @@
 # Activity 2
 
+## Summary
+In this activity I learned how to install the Angular CLI and create a new project. I also learned some basics about how the Angular framework works.
+
 ## Screenshots
 
 ![](screenshots/a2s1.png)
