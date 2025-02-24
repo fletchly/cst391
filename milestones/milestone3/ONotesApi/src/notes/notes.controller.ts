@@ -29,6 +29,7 @@ export const createNote: RequestHandler = async (req: Request, res: Response) =>
     try {
         const okPacket: OkPacket = await NotesDao.createNote(req.body);
         const noteUuid = await NotesDao.getLastInsertUuid();
+        // TODO: fix method so last insert ID is returned
         res.status(200).json(
             {
                 okPacket: okPacket,
@@ -49,6 +50,7 @@ export const updateNote: RequestHandler = async (req: Request, res: Response) =>
     try {
         const okPacket: OkPacket = await NotesDao.updateNote(req.body);
         const noteUuid = await NotesDao.getLastInsertUuid();
+        // TODO: fix method so last insert ID is returned
         res.status(200).json(
             {
                 okPacket: okPacket,
