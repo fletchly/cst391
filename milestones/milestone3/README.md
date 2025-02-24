@@ -21,19 +21,19 @@ API for managing notes
 
 ### Path Table
 
-| Method | Path | Description |
-| --- | --- | --- |
-| GET | [/notes](#getnotes) | Get all notes |
-| POST | [/notes](#postnotes) | Create a new note |
-| GET | [/notes/{id}](#getnotesid) | Get a note by ID |
-| PUT | [/notes/{id}](#putnotesid) | Update a note by ID |
+| Method | Path                          | Description         |
+|--------|-------------------------------|---------------------|
+| GET    | [/notes](#getnotes)           | Get all notes       |
+| POST   | [/notes](#postnotes)          | Create a new note   |
+| GET    | [/notes/{id}](#getnotesid)    | Get a note by ID    |
+| PUT    | [/notes/{id}](#putnotesid)    | Update a note by ID |
 | DELETE | [/notes/{id}](#deletenotesid) | Delete a note by ID |
 
 ### Reference Table
 
-| Name | Path | Description |
-| --- | --- | --- |
-| Note | [#/components/schemas/Note](#componentsschemasnote) |  |
+| Name | Path                                                | Description |
+|------|-----------------------------------------------------|-------------|
+| Note | [#/components/schemas/Note](#componentsschemasnote) |             |
 
 ### Path Details
 
@@ -57,7 +57,7 @@ API for managing notes
   content?: string
   created?: string
   updated?: string
-}[]
+}
 ```
 
 ***
