@@ -6,7 +6,7 @@ import {OkPacket} from "mysql";
 export const readNotes: RequestHandler = async (req: Request, res: Response) => {
     try {
         let notes;
-        let noteId = req.query.noteId as string;
+        let noteId = req.params.id as string;
 
         if (!noteId) {
             notes = await NotesDao.readNotes();
@@ -28,8 +28,12 @@ export const readNotes: RequestHandler = async (req: Request, res: Response) => 
 export const createNote: RequestHandler = async (req: Request, res: Response) => {
     try {
         const okPacket: OkPacket = await NotesDao.createNote(req.body);
+        const noteUuid = await NotesDao.getLastInsertUuid();
         res.status(200).json(
-            okPacket
+            {
+                okPacket: okPacket,
+                insertUuid: noteUuid,
+            }
         );
     } catch (error)
     {
@@ -44,8 +48,12 @@ export const createNote: RequestHandler = async (req: Request, res: Response) =>
 export const updateNote: RequestHandler = async (req: Request, res: Response) => {
     try {
         const okPacket: OkPacket = await NotesDao.updateNote(req.body);
+        const noteUuid = await NotesDao.getLastInsertUuid();
         res.status(200).json(
-            okPacket
+            {
+                okPacket: okPacket,
+                insertUuid: noteUuid,
+            }
         );
     } catch (error)
     {
@@ -59,7 +67,7 @@ export const updateNote: RequestHandler = async (req: Request, res: Response) =>
 // Delete note
 export const deleteNote: RequestHandler = async (req: Request, res: Response) => {
     try {
-        let noteId = req.params.noteId as string;
+        let noteId = req.params.id as string;
         if (noteId) {
             const response = await NotesDao.deleteNote(noteId);
             res.status(200).json(

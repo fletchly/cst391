@@ -10,7 +10,7 @@ export const readNotes = async () => {
 
 // Read notes by ID
 export const readNotesById = async (id: string) => {
-    return execute<Note[]>(notesQueries.readNotesById, []);
+    return execute<Note>(notesQueries.readNotesById, [id]);
 }
 
 // Create note
@@ -20,10 +20,15 @@ export const createNote = async (note: Note) => {
 
 // Update note
 export const updateNote = async (note: Note) => {
-    return execute<OkPacket>(notesQueries.updateNote, [note.title, note.content, note.createdAt]);
+    return execute<OkPacket>(notesQueries.updateNote, [note.title, note.content, note.id]);
 }
 
 // Delete note
 export const deleteNote = async (id: string) => {
     return execute<OkPacket>(notesQueries.deleteNote, [id]);
+}
+
+// Get last insert UUID
+export const getLastInsertUuid = async () => {
+    return execute<string>(notesQueries.getLastInsertUuid, []);
 }
