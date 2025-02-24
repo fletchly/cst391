@@ -1,4 +1,4 @@
-# Milestone 2: Revised Project Proposal
+# Milestone 3: Rest API using Express Framework
 👤 Owen Mount
 
 📚 CST-391: JavaScript Web Application Development
@@ -8,10 +8,52 @@
 ## Introduction
 ONotes is a lightweight plain-text notes app that supports some simple organization features. ONotes uses an express backend API paired with React and Angular frontends to access a MySQL database.
 
-## Instructor Feedback
-> Owen, outstanding work on this assignment, keep doing well
+## Design Updates
 
-I will keep doing well :)
+### Changes
+- Notes now have a UUID instead of an integer ID. UUIDs are stored as a binary(16) type in the database, and converted to
+  strings when they are queried. The MySql server manages UUID creation.
+
+### Issues
+- Because note IDs are stored as binary(16), the OkPacket always returns insertId: 0 when creating and updating notes.
+  I would like to add functionality to get the last inserted UUID in the future.
+
+## Functionality Requirements
+- [x] As a user, I want to create a new note so that I can jot down information.
+- [x] As a user, I want to edit an existing note so that I can update my information.
+- [x] As a user, I want to delete a note so that I can remove information I no longer need.
+- [ ] As a user, I want to organize my notes into folders or categories so that I can find them easily.
+- [ ] As a user, I want to add tags to my notes so that I can filter and search them efficiently.
+- [ ] As a user, I want a dark mode option so that I can reduce eye strain in low-light environments.
+
+## Design
+![](resources/er.png)
+
+*Database ER diagram*
+
+---
+
+![](resources/uml.png)
+
+*UML Class Diagram*
+
+---
+
+![](resources/sitemap.png)
+
+*UI Sitemap*
+
+---
+
+![](resources/wireframe1.png)
+
+*Wireframe: All notes display*
+
+---
+
+![](resources/wireframe2.png)
+
+*Wireframe: Note detail display*
 
 ## REST API Documentation
 
@@ -187,43 +229,6 @@ API for managing notes
   updated?: string
 }
 ```
-
-## Functionality Requirements
-- [ ] As a user, I want to create a new note so that I can jot down information.
-- [ ] As a user, I want to edit an existing note so that I can update my information.
-- [ ] As a user, I want to delete a note so that I can remove information I no longer need.
-- [ ] As a user, I want to organize my notes into folders or categories so that I can find them easily.
-- [ ] As a user, I want to add tags to my notes so that I can filter and search them efficiently.
-- [ ] As a user, I want a dark mode option so that I can reduce eye strain in low-light environments.
-
-## Design
-![](resources/er.png)
-
-*Database ER diagram*
-
----
-
-![](resources/uml.png)
-
-*UML Class Diagram*
-
----
-
-![](resources/sitemap.png)
-
-*UI Sitemap*
-
----
-
-![](resources/wireframe1.png)
-
-*Wireframe: All notes display*
-
----
-
-![](resources/wireframe2.png)
-
-*Wireframe: Note detail display*
 
 ## Risks
 - Data loss
