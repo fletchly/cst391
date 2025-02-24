@@ -13,6 +13,7 @@ ONotes is a lightweight plain-text notes app that supports some simple organizat
 ### Changes
 - Notes now have a UUID instead of an integer ID. UUIDs are stored as a binary(16) type in the database, and converted to
   strings when they are queried. The MySql server manages UUID creation.
+- The Note model no longer has an append() method. Instead, content can be appended directly.
 
 ### Issues
 - Because note IDs are stored as binary(16), the OkPacket always returns insertId: 0 when creating and updating notes.
