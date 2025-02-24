@@ -1,5 +1,8 @@
 # Activity 2
 
+## Summary
+In this activity I learned how to install the Angular CLI and create a new project. I also learned some basics about how the Angular framework works.
+
 ## Screenshots
 
 ![](screenshots/a2s1.png)
@@ -40,3 +43,9 @@
 
 [^1]: https://angular.dev/reference/configs/file-structure
 [^2]: https://angular.dev/tools/cli/environments
+
+### Question 2
+The source of the default Angular test page is rendered by the Angular framework, like all pages made with Angular. While the browser sees a singular HTML page, behind the scenes Angular is working with many different moving pats that allow it to generate the final page.
+- The main.ts file is the main entry point for the application. This is the file that node runs when the app is started.
+- app.component.css defines the styling for the root component of the app
+- app.component.ts is the root component of the application, containing the rest of the application's parts.
