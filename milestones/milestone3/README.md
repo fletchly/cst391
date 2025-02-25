@@ -63,7 +63,7 @@ ONotes is a lightweight plain-text notes app that supports some simple organizat
 - Data security
 - Scalability
 
-## REST API Documentation
+## [REST API Documentation](api.yaml)
 
 > Version 1.0.0
 
