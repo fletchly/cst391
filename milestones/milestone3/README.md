@@ -5,7 +5,7 @@
 
 🏷️ ONotes
 
-📺 [Screencast]()
+📺 [Screencast](https://mygcuedu6961-my.sharepoint.com/:v:/g/personal/omount_my_gcu_edu/Ea7nt3BsxsNDnvaEY6AsbCUByOUOt2nvJIA6L6t29GKWuQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=7axQeK)
 
 ## Introduction
 ONotes is a lightweight plain-text notes app that supports some simple organization features. ONotes uses an express backend API paired with React and Angular frontends to access a MySQL database.
@@ -97,7 +97,7 @@ Lightweight plain-text notes app
 
 ### [GET]/notes
 
-- Summary  
+- Summary
   Read all notes
 
 #### Responses
@@ -133,7 +133,7 @@ Lightweight plain-text notes app
 
 ### [POST]/notes
 
-- Summary  
+- Summary
   Create new note
 
 #### RequestBody
@@ -186,7 +186,7 @@ Lightweight plain-text notes app
 
 ### [PUT]/notes
 
-- Summary  
+- Summary
   Update note
 
 #### RequestBody
@@ -238,7 +238,7 @@ Lightweight plain-text notes app
 
 ### [GET]/notes/{noteUuid}
 
-- Summary  
+- Summary
   Read a note
 
 #### Responses
@@ -274,7 +274,7 @@ Lightweight plain-text notes app
 
 ### [DELETE]/notes/{noteUuid}
 
-- Summary  
+- Summary
   Delete a note
 
 #### Responses
