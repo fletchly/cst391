@@ -18,7 +18,10 @@ export class ListArtistsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       console.log("Getting data...");
-      this.artists = this.service.getArtists();
+      this.service.getArtists((artists: Artist[]) => {
+        this.artists = artists;
+        console.log('this.artists', this.artists);
+      });
       this.selectedArtist = null;
     });
   }

@@ -81,7 +81,8 @@ export const createAlbum: RequestHandler = async (req: Request, res: Response) =
     console.log('req.body', req.body);
     console.log('album', okPacket);
 
-    req.body.tracks.forEach(async (track: Track, index: number) => {
+    for (const track of req.body.tracks) {
+      const index: number = req.body.tracks.indexOf(track);
       try {
         await TracksDao.createTrack(track, index, okPacket.insertId);
       } catch (error) {
@@ -90,7 +91,7 @@ export const createAlbum: RequestHandler = async (req: Request, res: Response) =
           message: 'There was an error when writing album tracks'
         });
       }
-    });
+    }
 
     res.status(200).json(okPacket);
   } catch (error) {

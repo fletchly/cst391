@@ -10,6 +10,7 @@ import { DisplayAlbumComponent } from './display-album/display-album.component';
 import { EditAlbumComponent } from './edit-album/edit-album.component';
 import { DeleteAlbumComponent } from './delete-album/delete-album.component';
 import {NgOptimizedImage} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {NgOptimizedImage} from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgOptimizedImage,
     CreateAlbumComponent
