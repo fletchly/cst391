@@ -27,7 +27,7 @@ handles page events, and binds data to a view template.
 ---
 
 ![](screenshots/a4s5.png)
-*Screenshot 1: Create album result*
+*Screenshot 6: Create album result*
 ---
 
 ## Research
