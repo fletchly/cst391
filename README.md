@@ -5,6 +5,7 @@
 - [Activity 1](activities/activity1/)
 - [Activity 2](activities/activity2/)
 - [Activity 3](activities/activity3/)
+- [Activity 4](activities/activity4/)
 
 ## Milestones
 - [Milestone 1](milestones/milestone1/)
