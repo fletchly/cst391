@@ -6,27 +6,27 @@ handles page events, and binds data to a view template.
 
 ## Screenshots
 
-![](/screenshots/a4s0.png)
+![](screenshots/a4s0.png)
 *Screenshot 1: Main page*
 ---
 
-![](/screenshots/a4s1.png)
+![](screenshots/a4s1.png)
 *Screenshot 2: Artist list*
 ---
 
-![](/screenshots/a4s2.png)
+![](screenshots/a4s2.png)
 *Screenshot 3: Album list*
 ---
 
-![](/screenshots/a4s3.png)
+![](screenshots/a4s3.png)
 *Screenshot 4: Album details*
 ---
 
-![](/screenshots/a4s4.png)
+![](screenshots/a4s4.png)
 *Screenshot 5: Create album*
 ---
 
-![](/screenshots/a4s5.png)
+![](screenshots/a4s5.png)
 *Screenshot 1: Create album result*
 ---
 
