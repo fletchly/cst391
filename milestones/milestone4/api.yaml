@@ -1,0 +1,182 @@
+openapi: '3.0.0'
+info:
+  version: '1.0.0'
+  title: 'ONotes API'
+  description: Lightweight plain-text notes app
+
+paths:
+  /notes:
+    get:
+      summary: Read all notes
+      responses:
+        '200':
+          description: Array of all notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new note
+      requestBody:
+        description: Note model
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Note"
+      responses:
+        '200':
+          description: Response showing successful creation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkPacket"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Update note
+      requestBody:
+        description: Note model
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Note"
+      responses:
+        '200':
+          description: Response showing successful update
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /notes/{noteUuid}:
+    parameters:
+      - name: noteUuid
+        description: UUID of note
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/NoteUuid"
+    get:
+      summary: Read a note
+      responses:
+        '200':
+          description: Note object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Note"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Delere a note
+      responses:
+        '200':
+          description: Response showing successful delete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+
+
+
+components:
+  schemas:
+    NoteUuid:
+      description: UUID of note
+      type: string
+    DateTime:
+      description: Date and time for timestamps
+      type: string
+    Note:
+      type: object
+      required:
+        - id
+        - title
+        - content
+      properties:
+        id:
+          $ref: "#/components/schemas/NoteUuid"
+        title:
+          type: string
+        content:
+          type: string
+        created:
+          $ref: "#/components/schemas/DateTime"
+        updated:
+          $ref: "#/components/schemas/DateTime"
+    OkPacket:
+      type: object
+      properties:
+        fieldCount:
+          type: number
+        affectedRows:
+          type: number
+        insertId:
+          type: number
+        serverStatus:
+          type: number
+        warningCount:
+          type: number
+        message:
+          type: string
+        protocol41:
+          type: boolean
+        changedRows:
+          type: number
+    ResponsePacket:
+      type: object
+      properties:
+        okPacket:
+          $ref: "#/components/schemas/OkPacket"
+        lastInsertId:
+          $ref: "#/components/schemas/NoteUuid"
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          description: A human readable error message
+          type: string
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+security:
+  - ApiKey: []
