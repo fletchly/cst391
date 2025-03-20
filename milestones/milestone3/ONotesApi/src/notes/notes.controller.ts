@@ -85,3 +85,23 @@ export const deleteNote: RequestHandler = async (req: Request, res: Response) =>
         })
     }
 }
+
+// Search notes
+export const searchNotes: RequestHandler = async (req: Request, res: Response) => {
+    try {
+        let searchTerm = req.params.searchTerm as string;
+        if (searchTerm) {
+            const notes = await NotesDao.searchNotes(searchTerm);
+            res.status(200).json(
+                notes
+            )
+        } else {
+            throw new Error("Search term expected when searching notes");
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Error searching notes",
+            error: error,
+        })
+    }
+}

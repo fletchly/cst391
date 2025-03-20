@@ -17,6 +17,9 @@ export const notesQueries = {
     // Delete note
     deleteNote: `DELETE FROM onotes.notes WHERE id = UUID_TO_BIN(?);`,
 
+    // Search notes
+    searchNotes: `SELECT BIN_TO_UUID(id) AS id, title, content, created, updated FROM onotes.notes WHERE title LIKE ? OR content LIKE ? ORDER BY updated DESC;`,
+
     // Get UUID of last insert
     getLastInsertUuid: `SELECT BIN_TO_UUID(@last_inserted_uuid) as id;`
 }

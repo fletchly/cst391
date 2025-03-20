@@ -1,10 +1,6 @@
 <div class="container pt-3">
+  <h3>Search results for '{{searchTerm}}'</h3>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="col">
-      <a class="card shadow-sm" routerLink="/note/new">
-        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z"/></svg>
-      </a>
-    </div>
     @defer {
       @for (note of notes; track note.id) {
         <div class="col">

@@ -44,4 +44,11 @@ export class NoteService {
         callback();
       });
   }
+
+  searchNotes(searchTerm: string | null, callback: (notes: Note[]) => void) {
+    this.http.get<Note[]>(this.host + "/notes/search/" + searchTerm)
+      .subscribe((notes: Note[]) => {
+        callback(notes);
+      });
+  }
 }

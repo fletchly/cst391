@@ -28,6 +28,10 @@ export const deleteNote = async (id: string) => {
     return execute<OkPacket>(notesQueries.deleteNote, [id]);
 }
 
+export const searchNotes = async (searchTerm: string) => {
+    return execute<Note[]>(notesQueries.searchNotes, ["%" + searchTerm + "%", "%" + searchTerm + "%"]);
+}
+
 // Get last insert UUID
 export const getLastInsertUuid = async () => {
     return execute<string>(notesQueries.getLastInsertUuid, []);

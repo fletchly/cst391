@@ -17,4 +17,7 @@ router.route('/notes').put(NotesController.updateNote);
 // DELETE
 router.route('/notes/:id').delete(NotesController.deleteNote);
 
+// SEARCH
+router.route('/notes/search/:searchTerm').get(NotesController.searchNotes);
+
 export default router;
