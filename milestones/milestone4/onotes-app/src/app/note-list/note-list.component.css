@@ -1,0 +1,22 @@
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+
+}
+
+.card {
+  width: 18rem;
+  height: 20rem;
+  transition: all .2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+}
+
+.card:hover {
+  background-color: #ededed;
+}
+

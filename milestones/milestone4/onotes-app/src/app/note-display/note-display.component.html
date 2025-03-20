@@ -11,9 +11,9 @@
         <span class="note-menu-item">Last saved {{ formattedUpdated?.toLocaleString() }}</span>
       </div>
       <hr />
-      <input class="note-display h1" type="text" formControlName="title" />
     </div>
-    <textarea id="content" class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)"></textarea>
+    <input class="note-display h1" type="text" formControlName="title" placeholder="Title"/>
+    <textarea id="content" class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)" placeholder="Content"></textarea>
   </form>
 </div>
 
