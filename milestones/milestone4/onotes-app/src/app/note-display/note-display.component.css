@@ -8,3 +8,26 @@
 textarea.note-display {
   resize: none;
 }
+
+.note-menu-item {
+  display: inline-block;
+  text-align: center;
+  padding-block: 1px;
+  padding-inline: 6px;
+  text-decoration: none;
+  color: #4c4c4c;
+  border: none;
+  outline: none;
+  background: none;
+  transition: color 0.2s ease;
+}
+
+button.note-menu-item:hover,
+a.note-menu-item:hover {
+  color: #9c9c9c;
+}
+
+.note-menu {
+  display: flex;
+  align-items: center;
+}

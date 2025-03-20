@@ -1,8 +1,19 @@
 <div class="p-3">
   <form [formGroup]="noteForm" (ngSubmit)="handleSubmit()">
-    <button class="btn btn-success" type="submit">Save</button>
-    <input class="note-display h1" type="text" formControlName="title" />
-    <textarea class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)"></textarea>
+    <div class="position-sticky top-0 bg-body">
+      <div class="note-menu">
+        <a class="note-menu-item" routerLink="/">
+          <span class="material-symbols-outlined mt-1">keyboard_backspace</span>
+        </a>
+        <button class="note-menu-item" type="submit">
+          <span class="material-symbols-outlined mt-1">save</span>
+        </button>
+        <span class="note-menu-item">Last saved {{ formattedUpdated?.toLocaleString() }}</span>
+      </div>
+      <hr />
+      <input class="note-display h1" type="text" formControlName="title" />
+    </div>
+    <textarea id="content" class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)"></textarea>
   </form>
 </div>
 
