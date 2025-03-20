@@ -1,0 +1,10 @@
+.note-display {
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+}
+
+textarea.note-display {
+  resize: none;
+}

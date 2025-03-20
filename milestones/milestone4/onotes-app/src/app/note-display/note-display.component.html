@@ -1,1 +1,9 @@
-<p>note-display for note {{ noteId }} works!</p>
+<div class="p-3">
+  <form [formGroup]="noteForm" (ngSubmit)="handleSubmit()">
+    <button class="btn btn-success" type="submit">Save</button>
+    <input class="note-display h1" type="text" formControlName="title" />
+    <textarea class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)"></textarea>
+  </form>
+</div>
+
+
