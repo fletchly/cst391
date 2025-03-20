@@ -1,6 +1,6 @@
 export const notesQueries = {
     // Read all notes
-    readNotes: `SELECT BIN_TO_UUID(id) AS id, title, content, created, updated FROM onotes.notes;`,
+    readNotes: `SELECT BIN_TO_UUID(id) AS id, title, content, created, updated FROM onotes.notes ORDER BY updated DESC;`,
 
     // Read notes by id
     // The note ID is stored in the DB as a binary(16) type, and converted to and from a UUID when queried

@@ -30,4 +30,18 @@ export class NoteService {
         callback();
       });
   }
+
+  public saveNote(note: Note, callback: () => void): void {
+    this.http.post(this.host + "/notes", note)
+      .subscribe((data) => {
+        callback();
+      });
+  }
+
+  public deleteNote(id: string | null, callback: () => void): void {
+    this.http.delete(this.host + "/notes/" + id)
+      .subscribe((data) => {
+        callback();
+      });
+  }
 }

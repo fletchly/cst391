@@ -3,8 +3,7 @@ a {
 }
 
 .card {
-  width: 18rem; !important;
-  height: 20rem; !important;
+  height: 19.5rem;
   transition: all .2s ease;
 }
 
@@ -15,7 +14,7 @@ a {
 .card-text {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 10; !important;
+  -webkit-line-clamp: 10 !important;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }

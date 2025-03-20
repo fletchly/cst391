@@ -1,18 +1,41 @@
-<div class=" container card-wrapper p-3">
-  @defer {
-    <a routerLink="/">
-      <div class="card">
+<div class="container pt-3">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="col">
+      <a class="card shadow-sm" routerLink="/note/new">
         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z"/></svg>
-      </div>
-    </a>
-    @for (note of notes; track note.id) {
-      <app-note-card [note]="note"></app-note-card>
+      </a>
+    </div>
+    @defer {
+      @for (note of notes; track note.id) {
+        <div class="col">
+          <app-note-card [note]="note"></app-note-card>
+        </div>
+      }
+    } @placeholder {
+      <p>List of notes</p>
+    } @loading (minimum 0.2s) {
+      <p>Loading...</p>
+    } @error {
+      <p>Error loading notes</p>
     }
-  } @placeholder {
-    <p>List of notes</p>
-  } @loading {
-    <p>Loading...</p>
-  } @error {
-    <p>Error loading notes</p>
-  }
+  </div>
 </div>
+
+<!--<div class="card-wrapper p-3">-->
+<!--  @defer {-->
+<!--    <a routerLink="/note/new">-->
+<!--      <div class="card">-->
+<!--        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z"/></svg>-->
+<!--      </div>-->
+<!--    </a>-->
+<!--    @for (note of notes; track note.id) {-->
+<!--      <app-note-card [note]="note"></app-note-card>-->
+<!--    }-->
+<!--  } @placeholder {-->
+<!--    <p>List of notes</p>-->
+<!--  } @loading {-->
+<!--    <p>Loading...</p>-->
+<!--  } @error {-->
+<!--    <p>Error loading notes</p>-->
+<!--  }-->
+<!--</div>-->

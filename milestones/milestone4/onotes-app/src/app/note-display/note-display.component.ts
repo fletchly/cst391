@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NoteService} from '../service/note.service';
 import {Note} from '../model/note.model';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -28,7 +28,7 @@ export class NoteDisplayComponent {
     content: new FormControl(''),
   });
 
-  constructor() {
+  constructor(private router: Router) {
     this.noteService.getNoteById(this.noteId, (note: Note) => {
       this.note = note;
       this.formatDates();
@@ -74,5 +74,10 @@ export class NoteDisplayComponent {
       this.formattedCreated = new Date(this.note.created);
       this.formattedUpdated = new Date(this.note.updated);
     }
+  }
+
+  handleDelete() {
+    this.noteService.deleteNote(this.noteId, () => {});
+    this.router.navigate(['/'])
   }
 }

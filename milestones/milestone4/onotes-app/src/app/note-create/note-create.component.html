@@ -1,0 +1,19 @@
+<div class="p-3">
+  <form [formGroup]="noteForm" (ngSubmit)="handleSubmit()">
+    <div class="position-sticky top-0 bg-body">
+      <div class="note-menu">
+        <a class="note-menu-item" routerLink="/">
+          <span class="material-symbols-outlined mt-1">keyboard_backspace</span>
+        </a>
+        <button class="note-menu-item" type="submit">
+          <span class="material-symbols-outlined mt-1">save</span>
+        </button>
+      </div>
+      <hr />
+    </div>
+    <input class="note-display h1" type="text" formControlName="title" placeholder="Title"/>
+    <textarea id="content" class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)" placeholder="Content"></textarea>
+  </form>
+</div>
+
+
