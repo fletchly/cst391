@@ -9,5 +9,7 @@ At this point, I've added custom App and Card components to the app. I've also a
 ### Screenshots
 
 ![](screenshots/a5s1.png)
+
 *Screenshot 1: Application running with custom card components*
+
 ---
