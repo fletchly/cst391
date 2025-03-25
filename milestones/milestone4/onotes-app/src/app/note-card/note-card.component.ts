@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Note} from '../model/note.model';
 import {RouterLink} from '@angular/router';
+import {marked} from 'marked';
 
 @Component({
   selector: 'app-note-card',
@@ -11,5 +12,6 @@ import {RouterLink} from '@angular/router';
   styleUrl: './note-card.component.css'
 })
 export class NoteCardComponent {
-  @Input() note: Note | undefined;
+  @Input() note: Note = {id: '', title: '', content: '', created: '', updated: ''};
+  protected readonly marked = marked;
 }

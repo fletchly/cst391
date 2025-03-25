@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {NoteService} from '../service/note.service';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Note} from '../model/note.model';
 import {NoteCardComponent} from '../note-card/note-card.component';
 
@@ -8,7 +8,6 @@ import {NoteCardComponent} from '../note-card/note-card.component';
   selector: 'app-note-search-results',
   imports: [
     NoteCardComponent,
-    RouterLink
   ],
   templateUrl: './note-search-results.component.html',
   styleUrl: './note-search-results.component.css'

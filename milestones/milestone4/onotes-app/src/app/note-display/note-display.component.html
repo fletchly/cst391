@@ -11,12 +11,30 @@
         <button class="note-menu-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
           <span class="material-symbols-outlined mt-1">delete</span>
         </button>
-        <span class="note-menu-item">Last saved {{ formattedUpdated?.toLocaleString() }}</span>
+
+        <button class="note-menu-item" [ngClass]="{'note-active': editing}" (click)="edit()" type="button">
+          <span class="material-symbols-outlined mt-1">edit</span>
+        </button>
+
+        <button class="note-menu-item" [ngClass]="{'note-active': !editing}" (click)="preview()" type="button">
+          <span class="material-symbols-outlined mt-1">visibility</span>
+        </button>
+
+        <span class="note-menu-item">
+          Last saved {{ formattedUpdated?.toLocaleString() }}<span *ngIf="edited">*</span>
+        </span>
       </div>
       <hr />
     </div>
-    <input class="note-display h1" type="text" formControlName="title" placeholder="Title"/>
-    <textarea id="content" class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow($event)" placeholder="Content"></textarea>
+    <input class="note-display h1" type="text" formControlName="title" (input)="markEdited()" placeholder="Title"/>
+
+    @if (editing) {
+      <textarea #content class="note-display note-content" formControlName="content" rows="1" (input)="autoGrow(); markEdited()" placeholder="Content"></textarea>
+    } @else {
+      <div class="note-display" [innerHTML]="marked.parse(noteForm.value.content ?? '')"></div>
+    }
+
+
   </form>
 </div>
 

@@ -10,16 +10,17 @@ textarea.note-display {
 }
 
 .note-menu-item {
+  border-radius: 10px;
   display: inline-block;
   text-align: center;
   padding-block: 1px;
   padding-inline: 6px;
   text-decoration: none;
   color: #4c4c4c;
-  border: none;
+  border: 2px solid transparent;
   outline: none;
   background: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 button.note-menu-item:hover,
@@ -30,4 +31,12 @@ a.note-menu-item:hover {
 .note-menu {
   display: flex;
   align-items: center;
+}
+
+.note-active {
+  border: 2px solid #9c9c9c;
+}
+
+.note-content {
+  font-family: monospace;
 }

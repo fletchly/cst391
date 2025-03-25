@@ -1,6 +1,6 @@
-<a class="card shadow-sm" routerLink="/note/{{ note?.id }}">
+<a class="card shadow-sm" routerLink="/note/{{ note.id }}">
     <div class="card-body">
-      <h5 class="card-title">{{ note?.title }}</h5>
-      <p class="card-text">{{ note?.content }}</p>
+      <h5 class="card-title">{{ note.title }}</h5>
+      <p class="card-text" [innerHTML]="marked.parse(note.content)"></p>
     </div>
 </a>
