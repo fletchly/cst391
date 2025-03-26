@@ -1,0 +1,23 @@
+.router-link {
+    text-decoration: none;
+}
+
+.fixed-height {
+    height: 19.5rem;
+}
+
+.card {
+    transition: all .2s ease;
+}
+
+.card:hover {
+    background-color: #ededed;
+}
+
+.card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10 !important;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
