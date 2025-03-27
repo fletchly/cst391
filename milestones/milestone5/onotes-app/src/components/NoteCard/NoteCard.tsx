@@ -8,7 +8,7 @@ function NoteCard(props: {note: Note}) {
         <Link className={"router-link card shadow-sm"} to={`/notes/${props.note.id}`}>
             <div className={"fixed-height card-body"}>
                 <h5 className={"card-title"}>{props.note.title}</h5>
-                <div className={"card-text"} dangerouslySetInnerHTML={{ __html: MarkdownService.parse(props.note.content) }}></div>
+                <div className={"card-text"} dangerouslySetInnerHTML={{ __html: MarkdownService.parseMd(props.note.content) }}></div>
             </div>
         </Link>
     )

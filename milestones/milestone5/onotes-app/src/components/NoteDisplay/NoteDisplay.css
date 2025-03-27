@@ -1,0 +1,23 @@
+.note-content {
+    padding: 0;
+    border: none;
+    outline: none;
+    resize: none;
+    display: block;
+    width: 100%;
+}
+
+.note-title {
+    padding: 0.375rem 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.last-saved {
+    display: inline-block;
+}
+
+textarea.note-field {
+
+}

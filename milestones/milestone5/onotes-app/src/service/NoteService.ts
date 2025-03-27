@@ -17,7 +17,7 @@ export const getAllNotes = async () => {
 
 export const getNote = async (id: string) => {
     const response = await api.get(`/notes/${id}`);
-    return response.data as Note;
+    return response.data[0] as Note;
 };
 
 export const createNote = async (note: Note) => {

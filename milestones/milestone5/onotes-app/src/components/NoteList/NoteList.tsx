@@ -24,7 +24,9 @@ function NoteList() {
         <div className={"container pt-3"}>
             <div className={"row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"}>
                 <div className={"col"}>
-                    <Link to={"/note/new"} className={"router-link card shadow-sm align-items-center justify-content-center"} style={{height: '19.5rem'}}>
+                    <Link to={"/notes/new"}
+                          className={"router-link card shadow-sm align-items-center justify-content-center"}
+                          style={{height: '19.5rem'}}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
                              fill="#666666">
                             <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z"/>
@@ -33,7 +35,7 @@ function NoteList() {
                 </div>
                 {notes.map((note) => (
                     <div key={note.id} className={"col"}>
-                        <NoteCard note={note} />
+                        <NoteCard note={note}/>
                     </div>
                 ))}
             </div>
