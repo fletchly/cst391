@@ -15,6 +15,7 @@
 }
 
 .card-text {
+    height: 10lh;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 10 !important;

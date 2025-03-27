@@ -18,6 +18,12 @@
     display: inline-block;
 }
 
-textarea.note-field {
+.note-menu {
+    position: fixed;
+    top: 57px;
+    width: 100%;
+}
 
+.note-body {
+    margin: 70px 0;
 }

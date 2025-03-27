@@ -21,7 +21,7 @@ function NoteList() {
     }, []);
 
     return (
-        <div className={"container pt-3"}>
+        <div className={"note-list container pt-3"}>
             <div className={"row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"}>
                 <div className={"col"}>
                     <Link to={"/notes/new"}
