@@ -24,6 +24,20 @@ I created components that use useState to dynamically modify fields in the compo
 
 ![](screenshots/a5s2.png)
 
-*Screenshot 1: Application running with state change components*
+*Screenshot 2: Application running with state change components*
+
+---
+
+## Stopping Point 2
+
+### Summary
+
+I used the map function and react states to dynamically render content on the page based on an external data source.
+
+### Screenshots
+
+![](screenshots/a5s3.png)
+
+*Screenshot 3: Application running with dynamically rendered cards*
 
 ---
