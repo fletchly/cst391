@@ -75,46 +75,39 @@ function NoteDisplay(props: {modify: boolean}) {
         <>
             <form onSubmit={handleSubmit}>
                 <nav className={"note-menu position-fixed shadow-sm navbar navbar-expand-lg bg-body"}>
-                    <div className={"container-fluid"}>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <div className={"btn-group m-1"}>
-                                <Link to={"/"} className={"btn btn-outline-dark"}>
-                                    <i className={"bx bx-arrow-back"}></i>
-                                </Link>
-                                <button className={"btn btn-outline-dark"} type={"submit"}>
-                                    <i className={"bx bx-save"}></i>
-                                </button>
-                                {
-                                    props.modify &&
-                                    (<button className={"btn btn-outline-dark"} type={"button"} data-bs-toggle={"modal"}
-                                             data-bs-target={"#deleteModal"}>
-                                        <i className={"bx bx-trash"}></i>
-                                    </button>)
-                                }
-                            </div>
-                            <input placeholder={"Title"}
-                                   className={"m-1 note-title text-dark border border-dark rounded-2"}
-                                   onChange={handleChange} type={"text"}
-                                   name={"title"} value={note.title}/>
-                            <div className={"btn-group m-1"}>
-                                <button className={"btn btn-outline-dark" + (preview ? " active" : "")} type={"button"}
-                                        onClick={() => setPreview(true)}>
-                                    <i className={"bx bx-show-alt"}></i>
-                                </button>
-                                <button className={"btn btn-outline-dark" + (preview ? "" : " active")} type={"button"}
-                                        onClick={handleEditView}>
-                                    <i className={"bx bx-pencil"}></i>
-                                </button>
-                            </div>
-                            {props.modify && (<div
-                                className={"m-1 text-secondary last-saved"}>Last
-                                saved {formattedUpdated.toLocaleString()}{saved ? "" : "*"}</div>)}
+                    <div className={"container-fluid justify-content-start"}>
+                        <div className={"btn-group m-1"}>
+                            <Link to={"/"} className={"btn btn-outline-dark"}>
+                                <i className={"bx bx-arrow-back"}></i>
+                            </Link>
+                            <button className={"btn btn-outline-dark"} type={"submit"}>
+                                <i className={"bx bx-save"}></i>
+                            </button>
+                            {
+                                props.modify &&
+                                (<button className={"btn btn-outline-dark"} type={"button"} data-bs-toggle={"modal"}
+                                         data-bs-target={"#deleteModal"}>
+                                    <i className={"bx bx-trash"}></i>
+                                </button>)
+                            }
                         </div>
+                        <input placeholder={"Title"}
+                               className={"m-1 note-title text-dark border border-dark rounded-2"}
+                               onChange={handleChange} type={"text"}
+                               name={"title"} value={note.title}/>
+                        <div className={"btn-group m-1"}>
+                            <button className={"btn btn-outline-dark" + (preview ? " active" : "")} type={"button"}
+                                    onClick={() => setPreview(true)}>
+                                <i className={"bx bx-show-alt"}></i>
+                            </button>
+                            <button className={"btn btn-outline-dark" + (preview ? "" : " active")} type={"button"}
+                                    onClick={handleEditView}>
+                                <i className={"bx bx-pencil"}></i>
+                            </button>
+                        </div>
+                        {props.modify && (<div
+                            className={"m-1 text-secondary last-saved"}>Last
+                            saved {formattedUpdated.toLocaleString()}{saved ? "" : "*"}</div>)}
                     </div>
                 </nav>
                 <div className={"note-body p-3"}>
