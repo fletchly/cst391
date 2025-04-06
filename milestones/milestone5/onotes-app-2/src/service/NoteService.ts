@@ -1,14 +1,6 @@
-import axios from 'axios';
 import {Note} from "../model/Note.ts";
+import api from "./ApiService.ts";
 
-const BASE_URL = 'http://localhost:5001';
-
-const api= axios.create({
-    baseURL: BASE_URL,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
 
 export const getAllNotes = async () => {
     const response = await api.get('/notes');
@@ -39,3 +31,9 @@ export const searchNotes = async (searchTerm: string) => {
     const response = await api.get(`/notes/search/${searchTerm}`);
     return response.data as Note[];
 };
+
+
+export const checkAuth = async () => {
+    const response = await api.get('/api/v1/test');
+    return response.data.user;
+}
