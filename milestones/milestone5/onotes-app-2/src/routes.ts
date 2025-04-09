@@ -1,8 +1,8 @@
 import {createBrowserRouter} from "react-router-dom";
 import App from "./app/App.tsx";
 import {NoteList} from "./app/note-list/NoteList.tsx";
-import {Login} from "./app/Login/Login.tsx";
-import {Test} from "./app/Test/Test.tsx";
+import {Login} from "./app/login/Login.tsx";
+import {NoteDisplay} from "./app/note-display/NoteDisplay.tsx";
 
 const routes = createBrowserRouter([
     {
@@ -18,9 +18,9 @@ const routes = createBrowserRouter([
                 Component: Login,
             },
             {
-                path: '/test',
-                Component: Test,
-            }
+                path: '/note/:noteId',
+                Component: NoteDisplay,
+            },
         ]
     },
 ]);

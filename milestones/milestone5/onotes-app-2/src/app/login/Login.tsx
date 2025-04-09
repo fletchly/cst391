@@ -1,22 +1,12 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import {doLogin} from "../../service/AuthService.ts";
-import {useNavigate} from "react-router-dom";
 
 export function Login() {
     const [formData, setFormData] = useState({ username: "", password: "" })
-    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>)=> {
         e.preventDefault();
-        const token = await doLogin(formData.username, formData.password)
 
-        if (token) {
-            alert(token);
-        } else {
-            alert("Invalid credentials")
-        }
-
-        navigate('/test')
+        alert(`${formData.username} - ${formData.password}`)
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>)=> {
