@@ -8,7 +8,13 @@ import {
 import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { MarkdownService } from "../../service/MarkdownService.ts";
 import "./NoteDisplay.css";
-import { createNote, getNote, updateNote } from "../../service/NoteService.ts";
+import {
+  createNote,
+  deleteNote,
+  getNote,
+  updateNote,
+} from "../../service/NoteService.ts";
+import { Modal } from "../modal/Modal.tsx";
 
 export function NoteDisplay() {
   const { noteId } = useParams<{ noteId: string }>();
@@ -18,6 +24,7 @@ export function NoteDisplay() {
   const [formData, setFormData] = useState({ title: "", content: "" });
   const [preview, setPreview] = useState(false);
   const [saved, setSaved] = useState(true);
+  const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
   // Get note from backend
@@ -87,8 +94,25 @@ export function NoteDisplay() {
     setPreview(checked);
   };
 
+  const handleDelete = () => {
+    deleteNote(noteId!).then(() => {
+      setModalOpen(false);
+      navigate("/");
+    });
+  };
+
   return (
     <>
+      <Modal
+        isOpen={isModalOpen}
+        toggle={setModalOpen}
+        action={handleDelete}
+        content={{
+          title: "Delete note?",
+          ok: "Delete",
+          cancel: "Cancel",
+        }}
+      />
       <div className={"px-2"}>
         <div className={"sticky top-0 bg-white"}>
           <NoteMenu
@@ -96,6 +120,7 @@ export function NoteDisplay() {
             handleChange={handleChange}
             formData={formData}
             handlePreview={handlePreview}
+            toggleModal={setModalOpen}
             saved={saved}
             modify={modify}
             formattedUpdated={formattedUpdated}
@@ -122,6 +147,7 @@ interface NoteMenuProps {
   formData: { title: string; content: string };
 
   handlePreview(e: ChangeEvent<HTMLInputElement>): void;
+  toggleModal(state: boolean): void;
 
   saved: boolean;
   modify: boolean;
@@ -133,6 +159,7 @@ function NoteMenu({
   handleChange,
   formData,
   handlePreview,
+  toggleModal,
   saved,
   modify,
   formattedUpdated,
@@ -155,16 +182,20 @@ function NoteMenu({
         />
         <button
           type="submit"
-          className="hover:inset-shadow-xs cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
+          className="hover:inset-shadow-sm cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
         >
           <i className="bx bx-save"></i>
         </button>
-        <button
-          type="button"
-          className="hover:inset-shadow-xs cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
-        >
-          <i className="bx bx-trash"></i>
-        </button>
+        {modify && (
+          <button
+            type="button"
+            className="hover:inset-shadow-sm cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
+            onClick={() => toggleModal(true)}
+          >
+            {" "}
+            <i className="bx bx-trash"></i>
+          </button>
+        )}
         <PreviewToggle handlePreview={handlePreview} />
         {modify && (
           <div className="flex items-center text-gray-500">
@@ -229,7 +260,7 @@ function PreviewToggle({ handlePreview }: PreviewToggleProps) {
           id="hs-large-switch-with-icons"
           className="peer sr-only"
         />
-        <span className="absolute inset-shadow-xs inset-0 bg-gray-200 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-gray-800 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+        <span className="absolute inset-shadow-sm inset-0 bg-gray-200 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-gray-800 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
         <span className="absolute top-1/2 start-0.5 -translate-y-1/2 size-7 bg-white rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full"></span>
 
         <span className="absolute top-1/2 start-1.5 -translate-y-1/2 flex justify-center items-center size-5 text-gray-500 peer-checked:text-white transition-colors duration-200">

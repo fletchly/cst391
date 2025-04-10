@@ -22,6 +22,13 @@ const routes = createBrowserRouter([
         Component: Login,
       },
       {
+        path: "/note/new",
+        loader: () => {
+          return { modify: false, note_: {} };
+        },
+        Component: NoteDisplay,
+      },
+      {
         path: "/note/:noteId",
         loader: async ({ params }) => {
           return { modify: true, note_: await getNote(params.noteId!) };
