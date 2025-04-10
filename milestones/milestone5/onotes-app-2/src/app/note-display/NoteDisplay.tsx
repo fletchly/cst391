@@ -1,20 +1,75 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useParams } from "react-router-dom";
+import {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { MarkdownService } from "../../service/MarkdownService.ts";
 import "./NoteDisplay.css";
+import { createNote, getNote, updateNote } from "../../service/NoteService.ts";
 
 export function NoteDisplay() {
   const { noteId } = useParams<{ noteId: string }>();
+  const { modify, note_ } = useLoaderData();
+  const [note, setNote] = useState(note_);
+  const [formattedUpdated, setFormattedUpdated] = useState<Date>(new Date());
   const [formData, setFormData] = useState({ title: "", content: "" });
   const [preview, setPreview] = useState(false);
   const [saved, setSaved] = useState(true);
+  const navigate = useNavigate();
 
+  // Get note from backend
+  const fetchNote = useCallback(async () => {
+    try {
+      const data = await getNote(noteId!);
+      setNote(data);
+    } catch (error) {
+      console.error("Error fetching note", error);
+    }
+  }, [noteId]);
+
+  // Update form data with note data
+  const updateForm = useCallback(() => {
+    setFormData({
+      title: note.title,
+      content: note.content,
+    });
+    setFormattedUpdated(new Date(note.updated));
+  }, [note.content, note.title, note.updated]);
+
+  // Initially update the form
+  useEffect(() => {
+    if (modify) {
+      updateForm();
+    }
+  }, [modify, updateForm]);
+
+  // Handle note save
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`${formData.title} - ${formData.content}`);
-    setSaved(true);
+
+    // If the note is set to be modified, update the note in the backend
+    if (modify) {
+      updateNote({
+        ...note,
+        title: formData.title,
+        content: formData.content,
+      }).then(fetchNote);
+      updateForm();
+      setSaved(true);
+    } else {
+      // If the note is not set to be modified, then create it
+      createNote({
+        ...note,
+        title: formData.title,
+        content: formData.content,
+      }).then(() => navigate("/"));
+    }
   };
 
+  // Handle form changes
   const handleChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ) => {
@@ -26,6 +81,7 @@ export function NoteDisplay() {
     });
   };
 
+  // Toggle between previewing and editing
   const handlePreview = (e: ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
     setPreview(checked);
@@ -33,15 +89,18 @@ export function NoteDisplay() {
 
   return (
     <>
-      <div className={"p-2"}>
-        <div className="hidden">{noteId}</div>
-        <NoteMenu
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          formData={formData}
-          handlePreview={handlePreview}
-          saved={saved}
-        />
+      <div className={"px-2"}>
+        <div className={"sticky top-0 bg-white"}>
+          <NoteMenu
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            formData={formData}
+            handlePreview={handlePreview}
+            saved={saved}
+            modify={modify}
+            formattedUpdated={formattedUpdated}
+          />
+        </div>
         <NoteBody
           preview={preview}
           content={formData.content}
@@ -55,12 +114,18 @@ export function NoteDisplay() {
 // NoteMenu Component
 interface NoteMenuProps {
   handleSubmit(e: FormEvent<HTMLFormElement>): void;
+
   handleChange(
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ): void;
+
   formData: { title: string; content: string };
+
   handlePreview(e: ChangeEvent<HTMLInputElement>): void;
+
   saved: boolean;
+  modify: boolean;
+  formattedUpdated: Date;
 }
 
 function NoteMenu({
@@ -69,10 +134,17 @@ function NoteMenu({
   formData,
   handlePreview,
   saved,
+  modify,
+  formattedUpdated,
 }: NoteMenuProps) {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex flex-row space-x-2 items-stretch">
+      <div className="flex flex-row space-x-2 items-stretch pt-2">
+        <div className="flex items-center text-gray-500">
+          <Link to={"/"}>
+            <i className={"bx bx-arrow-back"}></i>
+          </Link>
+        </div>
         <input
           className="w-50 border-b-2 border-b-gray-200 text-gray-800 focus:border-b-gray-800 transition-colors truncate outline-none"
           type="text"
@@ -94,9 +166,14 @@ function NoteMenu({
           <i className="bx bx-trash"></i>
         </button>
         <PreviewToggle handlePreview={handlePreview} />
-        <div className="flex items-center text-gray-500">
-          <span>Last saved{saved ? "" : "*"}</span>
-        </div>
+        {modify && (
+          <div className="flex items-center text-gray-500">
+            <span>
+              Last saved {formattedUpdated.toLocaleString()}
+              {saved ? "" : "*"}
+            </span>
+          </div>
+        )}
       </div>
       <hr className="border-gray-200 mt-3" />
     </form>
