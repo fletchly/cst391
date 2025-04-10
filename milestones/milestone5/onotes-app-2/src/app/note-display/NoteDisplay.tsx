@@ -113,19 +113,20 @@ export function NoteDisplay() {
           cancel: "Cancel",
         }}
       />
+      <div className={"sticky top-0 bg-white"}>
+        <NoteMenu
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+          formData={formData}
+          handlePreview={handlePreview}
+          toggleModal={setModalOpen}
+          saved={saved}
+          modify={modify}
+          formattedUpdated={formattedUpdated}
+        />
+        <hr className="border-gray-200" />
+      </div>
       <div className={"px-2"}>
-        <div className={"sticky top-0 bg-white"}>
-          <NoteMenu
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            formData={formData}
-            handlePreview={handlePreview}
-            toggleModal={setModalOpen}
-            saved={saved}
-            modify={modify}
-            formattedUpdated={formattedUpdated}
-          />
-        </div>
         <NoteBody
           preview={preview}
           content={formData.content}
@@ -166,8 +167,8 @@ function NoteMenu({
 }: NoteMenuProps) {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex flex-row space-x-2 items-stretch pt-2">
-        <div className="flex items-center text-gray-500">
+      <div className="flex flex-col sm:flex-row flex-wrap sm:space-x-2 sm:space-y-0 space-y-2 space-x-0 items-stretch p-2">
+        <div className="flex items-center text-gray-500 px-2 py-1 rounded-md hover:bg-gray-200 transition-colors">
           <Link to={"/"}>
             <i className={"bx bx-arrow-back"}></i>
           </Link>
@@ -182,14 +183,14 @@ function NoteMenu({
         />
         <button
           type="submit"
-          className="hover:inset-shadow-sm cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
+          className="hover:text-gray-800 hover:inset-shadow-sm cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
         >
           <i className="bx bx-save"></i>
         </button>
         {modify && (
           <button
             type="button"
-            className="hover:inset-shadow-sm cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
+            className="hover:text-gray-800 hover:inset-shadow-sm cursor-pointer text-xl text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all"
             onClick={() => toggleModal(true)}
           >
             {" "}
@@ -206,7 +207,6 @@ function NoteMenu({
           </div>
         )}
       </div>
-      <hr className="border-gray-200 mt-3" />
     </form>
   );
 }

@@ -32,7 +32,7 @@ export function Modal({ isOpen, toggle, action, content }: ModalProps) {
               {content.ok}
             </button>
             <button
-              className="hover:inset-shadow-sm cursor-pointer text-md text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all mx-1"
+              className="hover:inset-shadow-sm cursor-pointer text-md hover:text-gray-800 text-gray-500 active:text-white active:bg-gray-800 rounded-md bg-gray-200 px-2 py-1 transition-all mx-1"
               onClick={() => toggle(false)}
             >
               {content.cancel}

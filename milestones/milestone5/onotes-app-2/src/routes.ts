@@ -3,7 +3,7 @@ import App from "./app/App.tsx";
 import { NoteList } from "./app/note-list/NoteList.tsx";
 import { Login } from "./app/login/Login.tsx";
 import { NoteDisplay } from "./app/note-display/NoteDisplay.tsx";
-import { getAllNotes, getNote } from "./service/NoteService.ts";
+import { getAllNotes, getNote, searchNotes } from "./service/NoteService.ts";
 
 const routes = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ const routes = createBrowserRouter([
       {
         path: "/",
         loader: async () => {
-          return { notes: await getAllNotes() };
+          return { search: false, notes: await getAllNotes() };
         },
         Component: NoteList,
       },
@@ -34,6 +34,16 @@ const routes = createBrowserRouter([
           return { modify: true, note_: await getNote(params.noteId!) };
         },
         Component: NoteDisplay,
+      },
+      {
+        path: "/search/:keyword",
+        loader: async ({ params }) => {
+          return {
+            search: true,
+            notes: await searchNotes(params.keyword!),
+          };
+        },
+        Component: NoteList,
       },
     ],
   },
