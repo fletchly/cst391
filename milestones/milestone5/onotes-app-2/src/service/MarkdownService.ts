@@ -40,10 +40,17 @@ renderer.list = (list) => {
   else return `<ul class="markdown">${items}</ul>`;
 };
 
+renderer.br = () => {
+  return "<br/>";
+};
+
 marked.use({
-  breaks: true,
   gfm: true,
   renderer: renderer,
+});
+
+marked.options({
+  breaks: true,
 });
 
 export class MarkdownService {
