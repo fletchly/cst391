@@ -48,7 +48,7 @@ const App = (props) => {
         console.log('Update Single Album = ', navigate);
         var indexNumber = 0;
         for (var i = 0; i < albumList.length; i++) {
-            if (albumList[i].id === id)
+            if (albumList[i].albumId === id)
                 indexNumber = i;
         }
 
