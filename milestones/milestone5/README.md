@@ -1,4 +1,4 @@
-# Milestone 5: React Fron-End
+# Milestone 5: React Front-End
 👤 Owen Mount
 
 📚 CST-391: JavaScript Web Application Development
