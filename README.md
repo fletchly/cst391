@@ -7,9 +7,12 @@
 - [Activity 3](activities/activity3/)
 - [Activity 4](activities/activity4/)
 - [Activity 5](activities/activity5/)
+- [Activity 6]()
+- [Activity 7](activities/activity7/)
 
 ## Milestones
 - [Milestone 1](milestones/milestone1/)
 - [Milestone 2](milestones/milestone2/)
 - [Milestone 3](milestones/milestone3/)
 - [Milestone 4](milestones/milestone4/)
+- [Milestone 5](milestones/milestone5/)
